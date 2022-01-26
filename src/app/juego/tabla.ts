@@ -4,6 +4,10 @@ import { Celda } from './celda';
 export class Tabla {
 
     celdas: Celda[][] = [];
+
+    private celdasRestantes = 0;
+    private cantidadMinas = 0;
+
     constructor(tamanio: number, minas: number) {
 
         for (let y = 0; y < tamanio; y++) {
@@ -23,16 +27,7 @@ export class Tabla {
         }
 
         //Contar minas
-        const pares = [
-            [-1,-1],
-            [-1, 0],
-            [-1, 1],
-            [ 0,-1],
-            [ 0, 1],
-            [ 1,-1],
-            [ 1, 0],
-            [ 1, 1],
-        ];
+        const pares = [[-1,-1], [-1, 0], [-1, 1], [ 0,-1], [ 0, 1], [ 1,-1], [ 1, 0], [ 1, 1]];
         for(let y = 0; y < tamanio; y++){
             
             for(let x= 0; x < tamanio; x++){
@@ -43,12 +38,17 @@ export class Tabla {
                     if (this.celdas[y+par[0]] && this.celdas[y+par[0]][x+par[1]] && this.celdas[y+par[0]][x+par[1]].mina){
                         minasAdyacentes++;
                     }
-                    this.celdas[y][x].minasProximidad = minasAdyacentes;
+
                 }
+                this.celdas[y][x].minasProximidad = minasAdyacentes;
                 
+                if(this.celdas[y][x].mina){
+                    this.cantidadMinas ++;
+                }
             }
 
         }
+        this.celdasRestantes = (tamanio * tamanio) - this.cantidadMinas;
     }
 
     generarCeldaAleatoria(): Celda {
@@ -59,18 +59,24 @@ export class Tabla {
 
     }
 
-    verificarCelda(celda: Celda){
+    verificarCelda(celda: Celda): 'finjuego' | 'gana' | null {
+
+        console.log('Controlando celda', celda);
         if(celda.estado !== "abierto") {
             return;
         } else if (celda.mina) {
-            this.finJuego()
+            return 'finjuego';
         } else {
             celda.estado = 'limpio';
+            if(this.celdasRestantes-- <= 1) {
+                return 'gana';
+            }
+            return;
         }
     }
 
-    finJuego(){
+    // finJuego(){
 
-    }
+    // }
 
 }
