@@ -1,3 +1,4 @@
+import { sanitizeIdentifier } from '@angular/compiler';
 import { Celda } from './celda';
 
 export class Tabla {
@@ -20,6 +21,34 @@ export class Tabla {
         for (let i = 0; i < minas; i++) {
             this.generarCeldaAleatoria().mina = true;
         }
+
+        //Contar minas
+        const pares = [
+            [-1,-1],
+            [-1, 0],
+            [-1, 1],
+            [ 0,-1],
+            [ 0, 1],
+            [ 1,-1],
+            [ 1, 0],
+            [ 1, 1],
+        ];
+        for(let y = 0; y < tamanio; y++){
+            
+            for(let x= 0; x < tamanio; x++){
+                
+                let minasAdyacentes = 0;
+                for(let par of pares){
+                    
+                    if (this.celdas[y+par[0]] && this.celdas[y+par[0]][x+par[1]] && this.celdas[y+par[0]][x+par[1]].mina){
+                        minasAdyacentes++;
+                    }
+                    this.celdas[y][x].minasProximidad = minasAdyacentes;
+                }
+                
+            }
+
+        }
     }
 
     generarCeldaAleatoria(): Celda {
@@ -36,10 +65,12 @@ export class Tabla {
         } else if (celda.mina) {
             this.finJuego()
         } else {
-
-        
-            celda.estado = celda.mina ?
+            celda.estado = 'limpio';
         }
+    }
+
+    finJuego(){
+
     }
 
 }

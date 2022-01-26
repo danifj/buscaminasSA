@@ -1,4 +1,10 @@
 Tabla:
 <table>
-    <tr *ngFor="let fila of tabla.celdas"></tr>
+    <tr *ngFor="let fila of tabla.celdas; index as y">
+        <td *ngFor="let columna of fila; index as x">
+            <div>
+                ({{y}})
+            </div>
+        </td>
+    </tr>
 </table>
