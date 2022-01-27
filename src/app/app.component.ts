@@ -29,4 +29,12 @@ export class AppComponent {
 
   }
 
+  bandera(celda: Celda){
+    if(celda.estado === 'bandera'){
+      celda.estado = 'abierto';
+    } else {
+      celda.estado = 'bandera';
+    }
+  }
+
 }

@@ -65,6 +65,7 @@ export class Tabla {
         if(celda.estado !== "abierto") {
             return;
         } else if (celda.mina) {
+            this.mostrarTodo();
             return 'finjuego';
         } else {
             celda.estado = 'limpio';
@@ -72,6 +73,21 @@ export class Tabla {
                 return 'gana';
             }
             return;
+        }
+    }
+
+    mostrarTodo() {
+        
+        for(let y = 0; y<this.celdas.length; y++){
+            
+            for(let x = 0; x<this.celdas[y].length; x++){
+
+                if(this.celdas[y][x].estado === 'abierto'){
+                    this.celdas[y][x].estado = 'limpio';
+                }
+            
+            }
+
         }
     }
 
