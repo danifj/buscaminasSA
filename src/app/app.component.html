@@ -44,8 +44,28 @@
                 </mat-card-content>
 
                 <mat-card-actions>
-                    <button mat-button (click)="reiniciar()"><mat-icon>restart_alt</mat-icon></button>
+
+                    <div class="row">
+                        <div class="col">
+                            <button mat-button (click)="reiniciar()"><mat-icon>restart_alt</mat-icon></button>
+                        </div>
+                        <div class="col">
+                            <div mat-line>
+                                <mat-icon mat-list-icon>timer</mat-icon> {{transform(time)}} </div>
+                        </div>
+                    </div>
+
+                    <!-- 
+                    <mat-list>
+                        <div mat-subheader></div>
+                        <mat-list-item class="menu-item"> -->
+
+                    <!-- </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </mat-list> -->
                 </mat-card-actions>
+
+
             </mat-card>
         </div>
     </div>
