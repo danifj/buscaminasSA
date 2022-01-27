@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Comentarios a tener en cuenta sobre cómo se realizó la tarea:
 
-*Para la lógica googleé mucho (Soy de los que programan con google al lado). Dada esa situación entendí que me falta ajustar bastante como front en angular, especialmente con javascript (Algunos problemas con el scope en la arquitectura de Angular, y conceptos puntuales del framework).
+*Para la lógica googleé mucho (Soy de los que programan con google al lado). Dada esa situación entendí que me falta ajustar bastante como front en angular, especialmente con javascript (Algunos problemas con el scope en la estructura de componentes y arquitectura de Angular, y conceptos puntuales del framework).
 
 *La indentación del código puede parecer rara, muy separada, lo hice así porque arrastro esa (mala o buena) práctica desde c# .net.
 
