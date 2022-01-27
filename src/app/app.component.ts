@@ -1,7 +1,14 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 import { Tabla } from './juego/tabla'
 import { Celda } from './juego/celda';
+
+import {MatDialog} from '@angular/material/dialog';
+import { ResultadoComponent } from './dialogos/resultado/resultado.component';
+
+export interface DialogData {
+  estadoJuego: 'ganaste' | 'perdiste';
+}
 
 @Component({
   selector: 'app-root',
@@ -12,8 +19,9 @@ export class AppComponent {
   
   title = 'buscaminassa';
   tabla: Tabla
+  displayedColumns: string[] = [''];
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.reiniciar();
   }
 
@@ -28,11 +36,13 @@ export class AppComponent {
     
     if (result === 'finjuego') {
       
-      alert('Perdiste!');
+      // alert('Perdiste!');
+      this.openDialog('perdiste');
 
     } else if (result === 'gana'){
       
-      alert('Ganaste!');
+      // alert('Ganaste!');
+      this.openDialog('ganaste');
 
     }
 
@@ -55,5 +65,14 @@ export class AppComponent {
   reiniciar(){
     this.tabla = new Tabla(10, 10);
   }
+
+  public openDialog(estado: string): void {
+    const updateDialogRef = this.dialog.open(ResultadoComponent, {
+      data: {
+        estadoJuego: estado,
+      },
+    });
+  }
+
 
 }
