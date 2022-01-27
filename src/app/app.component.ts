@@ -53,7 +53,7 @@ export class AppComponent {
   }
 
   reiniciar(){
-    this.tabla = new Tabla(5, 5);
+    this.tabla = new Tabla(10, 10);
   }
 
 }
