@@ -63,14 +63,21 @@ export class Tabla {
 
         console.log('Controlando celda', celda);
         if(celda.estado !== "abierto") {
+            
             return;
+
         } else if (celda.mina) {
+            
             this.mostrarTodo();
             return 'finjuego';
+
         } else {
+            
             celda.estado = 'limpio';
             if(this.celdasRestantes-- <= 1) {
+            
                 return 'gana';
+
             }
             return;
         }
@@ -78,12 +85,12 @@ export class Tabla {
 
     mostrarTodo() {
         
-        for(let y = 0; y<this.celdas.length; y++){
+        for(const fila of this.celdas){
             
-            for(let x = 0; x<this.celdas[y].length; x++){
+            for(const celda of fila){
 
-                if(this.celdas[y][x].estado === 'abierto'){
-                    this.celdas[y][x].estado = 'limpio';
+                if(celda.estado === 'abierto'){
+                    celda.estado = 'limpio';
                 }
             
             }

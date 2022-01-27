@@ -11,7 +11,11 @@ import { Celda } from './juego/celda';
 export class AppComponent {
   
   title = 'buscaminassa';
-  tabla = new Tabla(5, 5);
+  tabla: Tabla
+
+  constructor() {
+    this.reiniciar();
+  }
 
   // manejarFinJuego(result: 'finjuego' | null){
 
@@ -21,20 +25,35 @@ export class AppComponent {
     
     const result = this.tabla.verificarCelda(celda);
     console.log('resultado obtenido', result);
+    
     if (result === 'finjuego') {
+      
       alert('Perdiste!');
+
     } else if (result === 'gana'){
+      
       alert('Ganaste!');
+
     }
 
   }
 
   bandera(celda: Celda){
+    
     if(celda.estado === 'bandera'){
+    
       celda.estado = 'abierto';
+
     } else {
+      
       celda.estado = 'bandera';
+
     }
+
+  }
+
+  reiniciar(){
+    this.tabla = new Tabla(5, 5);
   }
 
 }
