@@ -10,6 +10,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 *También se darán cuenta por los tiempos de commit que dejé lo visual para el último. Algo que también arrastro de la práctica backend. aunque en este caso era dificil maquetar primero. Y aún considero no tener claro, en el orden de prioridades de un Front, dónde focalizar primero.
 
+*Agregué un timer que ya tenía prediseñado de otro proyecto.
+
+*Se complicó tema estilos en algunas cosas que con el tiempo deberían ser más asimiladas para un perfil front. Ejemplo: llevar el diseño de tablas a mat-table para aprovechar al 100% las ventajas de angular material. O Algunos problemas más simples como alineaciones y margenes responsive.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
